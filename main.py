@@ -14,11 +14,12 @@ def restAPI():
         for filename in os.listdir(folder):
             images.append(filename)
         return images
-    images = load_images_from_folder("/var/www/html/Face-Recognition-Rest_API/images")
+    images = load_images_from_folder("/var/www/html/Face-Recognition-Rest-API/images")
+
     # print(images)
     images_name = []
     for img in images:
-        images_name.append(fr.load_image_file(os.path.join("/var/www/html/Face-Recognition-Rest_API/images", img)))
+        images_name.append(fr.load_image_file(os.path.join("/var/www/html/Face-Recognition-Rest-API/images", img)))
     encodings = []
     for img in images_name:
         encodings.append(fr.face_encodings(img)[0])
@@ -90,4 +91,4 @@ def restAPI():
     return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=2000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
