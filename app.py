@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 
-@app.route('/detect')
+@app.route('/')
 def restAPI():
     def load_images_from_folder(folder):
         images = []
@@ -91,4 +91,5 @@ def restAPI():
     return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get("PORT", 17995))
+    app.run(host='0.0.0.0', port=port)
